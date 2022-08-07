@@ -8,7 +8,7 @@
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude" ipr="trust200902" category="info" docName="draft-ietf-mops-ar-use-case-latest" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true" version="3">
   <!-- xml2rfc v2v3 conversion 3.11.1 -->
   <front>
-    <title abbrev="MOPS AR Use Case">Media Operations Use Case for an Augmented Reality Application on Edge Computing Infrastructure</title>
+    <title abbrev="MOPS AR Use Case">Media Operations Use Case for an Extended Reality Application on Edge Computing Infrastructure</title>
     <seriesInfo name="Internet-Draft" value="draft-ietf-mops-ar-use-case-latest"/>
     <author fullname="Renan Krishna" initials="R." surname="Krishna">
       <organization>
@@ -40,7 +40,7 @@
         <uri/>
       </address>
     </author>
-    <date year="2022" month="March" day="06"/>
+    <date year="2022" month="July" day="11"/>
     <area>Operations and Management</area>
     <workgroup> MOPS</workgroup>
     <abstract>
@@ -53,6 +53,8 @@
 		form factors and need Edge computing resources to mitigate the effect of problems such as a need to support interactive communication
 		requiring low latency, limited battery power, and heat dissipation from those devices. The intended audience for this document are network
 		operators who are interested in providing edge computing resources to operationalize the requirements of such applications.
+		We discuss the expected behavior of XR applications which can be used to manage the traffic.
+		In addition, we discuss the service requirements of XR applications to be able to run on the network.
 	
       </t>
     </abstract>
@@ -96,7 +98,12 @@
 	  battery capacity and dissipate heat when running. Besides as the user of these devices moves around as they run the
 	  XR application, the wireless latency and bandwidth available to the devices fluctuates and the communication link itself
 	  might fail. As a result algorithms such as those based on adaptive-bit-rate techniques that base their policy on heuristics
-	  or models of deployment perform sub-optimally in such dynamic environments.<xref target="ABR_1" format="default"/>.
+	  or models of deployment perform sub-optimally in such dynamic environments<xref target="ABR_1" format="default"/>.
+	  In addition, network operators can expect that the parameters that characterize the expected behavior of XR applications
+	  are heavy-tailed. Such workloads require appropriate resource management policies to be used on the Edge.
+	  The service requirements of XR applications are also challenging when compared to the current video applications.
+	  In particular several QoE factors such as motion sickness are unique to XR applications and must be considered when operationalizing a network.
+
 		We motivate these issues with a use-case that we present in the following sections.
       </t>
     </section>
@@ -252,23 +259,64 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
       </ul>
     </section>
     <section anchor="ArTraffic" numbered="true" toc="default">
-      <name>AR Network Traffic and Interaction with TCP</name>
+      <name>AR Network Traffic</name>
+	
+	  <section anchor="traffic_workload" numbered="true" toc="default">
+        <name>Traffic Workload</name>
+        <t>
+		As discussed earlier, the parameters that capture the characteristics of XR application behavior are heavy-tailed.
+		Examples of such parameters include the distribution of arrival times between XR application invocation, the amount
+		of data transferred, and the inter-arrival times of packets within a session.. As a result, any traffic model based on
+		such parameters are themselves heavy-tailed. Using
+		these models to predict performance under alternative resource allocations by the network operator is challenging.
+		
+        </t>
+
+      </section>
+	
+	
+	  <section anchor="traffic_performance" numbered="true" toc="default">
+        <name>Traffic Performance Metrics</name>
+	
       <t>
-	In addition to the requirements for ABR algorithms, there are other operational issues that need to
-	be considered for AR use cases such as the one descibed above. In a study <xref target="AR_TRAFFIC" format="default"/> conducted to characterize
-	multi-user AR over cellular networks, the following issues were identified:
+	  The performance requirements for AR/VR traffic have characteristics that need to be considered when operationalizing a network.
+	  We now discuss these characteristics.</t>
+<t>The bandwidth requirements of XR applications are substantially higher than those of video based applications.</t>
+
+	<t>The latency requirements of XR applications have been studied recently  <xref target="AR_TRAFFIC" format="default"/> .The following issues were identified.:
       </t>
       <ul spacing="normal">
         <li>The uploading of data from an AR device to a remote server for processing dominates the end-to-end latency.
 			   </li>
         <li> A lack of visual features in the grid environment can cause increased latencies as the AR device
 			   uploads additional visual data for processing to the remote server.</li>
-        <li>AR applications tend to have large bursts that are separated by significant time gaps.
-			   As a result, the TCP congestion window enters slow start before the large bursts of data arrive
-			    increasing the perceived user latency. The study <xref target="AR_TRAFFIC" format="default"/> shows that segmentation latency at 4G LTE (Long Term Evolution)'s
-				RAN (Radio Access Network)'s RLC (Radio Link Control) layer impacts TCP's performance during slow-start.</li>
+        <li>AR applications tend to have large bursts that are separated by significant time gaps.</li>
       </ul>
-    </section>
+	
+	  <t>The packet loss rates in wireless links between XR devices and the Edge server can be as high as 2% or more  <xref target="WIRELESS_1" format="default"/>.
+	  5G systems however promise a reliability of 99.999% with an air interface latency of 0.5ms<xref target="RELIABILITY_1" format="default"/>,
+	  <xref target="RELIABILITY_2" format="default"/>. </t>
+	 <t> Finally, XR applications interact with each other on a time scale of a round-trip-time propagation
+	  and this must be considered when operationalizing a network.</t>
+
+
+	
+	  </section>
+
+	</section>
+	
+	
+	<section anchor="ack" numbered="true" toc="default">
+        <name>Acknowledgements</name>
+        <t>
+		Many Thanks to Spencer Dawkins, Rohit Abhishek, Jake Holland, Kiran Makhijani
+		and Ali Begen for providing very helpful feedback suggestions and comments.
+		
+        </t>
+
+      </section>
+	
+	
   </middle>
   <back>
     <references>
@@ -846,6 +894,57 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
           <date year="1997"/>
         </front>
         <seriesInfo name="" value="Presence:Teleoperators and Virtual Environments 6.4, pp. 355-385."/>
+      </reference>
+	
+	
+	  <reference anchor="WIRELESS_1" target="">
+        <front>
+          <title>  Characterizing user behavior and network performance in a public wireless LAN.</title>
+          <author initials="A." surname="Balachandran" fullname="Anand Balachandran">
+            <organization/>
+          </author>
+		
+		  <author initials="G.M." surname="Voelker" fullname="Geoffrey M. Voelker">
+            <organization/>
+          </author>
+		
+		   <author initials="P." surname="Bahl" fullname="Paramvir Bahl">
+            <organization/>
+          </author>
+		
+		
+		  <author initials="P.V." surname=" Rangan" fullname=" P. Venkat Rangan">
+            <organization/>
+          </author>
+		
+		
+          <date year="2002"/>
+        </front>
+        <seriesInfo name="In" value="Proceedings of the 2002 ACM SIGMETRICS international conference on Measurement and modeling of computer systems, pp.  195-205."/>
+      </reference>
+	
+	
+	  <reference anchor="RELIABILITY_1" target="">
+        <front>
+          <title> 3GPP TR 38.913: Study on Scenarios and Requirements for Next Generation Access Technologies.</title>
+          <author initials="" surname="3GPP" fullname="3GPP">
+            <organization/>
+          </author>
+          <date year="2018"/>
+        </front>
+        <seriesInfo name="" value="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=2996"/>
+      </reference>
+	
+	
+	  <reference anchor="RELIABILITY_2" target="">
+        <front>
+          <title> 3GPP TR 22.261: Service Requirements For The 5G System.</title>
+          <author initials="" surname="3GPP" fullname="3GPP">
+            <organization/>
+          </author>
+          <date year="2019"/>
+        </front>
+        <seriesInfo name="" value="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3107"/>
       </reference>
 	
 	
