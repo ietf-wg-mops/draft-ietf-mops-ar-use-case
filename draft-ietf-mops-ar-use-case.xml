@@ -152,7 +152,7 @@
 		Acquisition of a model of the real world: The tracked natural features are used to develop an annotated
 		point cloud based model that is then stored in a database.To ensure that this database can be scaled up,techniques such as
 		combining a client side simultaneous tracking and mapping and a server-side localization
-		are used<xref target="SLAM_1" format="default"/>, <xref target="SLAM_2" format="default"/>, <xref target="SLAM_3" format="default"/>, <xref target="SLAM_4" format="default"/>.
+		are used<xref target="SLAM_1" format="default"/>, <xref target="SLAM_2" format="default"/>, <xref target="SLAM_3" format="default"/>, <xref target="SLAM_4" format="default"/>.Another model that can be built is based on polygon mesh and texture mapping technique. The polygon mesh encodes a 3D object's shape which is expressed as a collection of small flat surfaces that are polygons. In texture mapping, color patterns are mapped on to an object's surface. A third modelling technique uses a 2D lightfield that describes the intensity or color of the light rays arriving at a single point from arbitrary directions. Assuming distant light sources, the single point is approximately valid for small scenes. For larger scenes, a 5D lightfield is used which encodes seperate 2D lightfields for many 3D positions in space <xref target="AUGMENTED" format="default"/>.
         </t>
         <t>
 		Registration: The coordinate systems, brightness, and color
@@ -268,7 +268,7 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
 		Examples of such parameters include the distribution of arrival times between XR application invocation, the amount
 		of data transferred, and the inter-arrival times of packets within a session.. As a result, any traffic model based on
 		such parameters are themselves heavy-tailed. Using
-		these models to predict performance under alternative resource allocations by the network operator is challenging.
+		these models to predict performance under alternative resource allocations by the network operator is challenging. For example, both uplink and downlink traffic to a UE device has parameters such as volume of XR data, burst time, and idle time that are heavy tailed. If multiple XR device users are accessing the wireless link to the closest edge server as in our use case, the heavy tailed sources get aggregated into long range dependent traffic. Such traffic can have long bursts and various traffic parameters from widely seperated time can show correlation.As a result, the edge servers to which multiple XR devices are connected wirelessly could face long bursts of traffic. Thus, the provisioning of edge servers in terms of the number of servers, the topology, where to place them, the assignment of link capacity, CPUs and GPUs should keep the above factors in mind.
 		
         </t>
 
@@ -293,9 +293,7 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
         <li>AR applications tend to have large bursts that are separated by significant time gaps.</li>
       </ul>
 	
-	  <t>The packet loss rates in wireless links between XR devices and the Edge server can be as high as 2% or more  <xref target="WIRELESS_1" format="default"/>.
-	  5G systems however promise a reliability of 99.999% with an air interface latency of 0.5ms<xref target="RELIABILITY_1" format="default"/>,
-	  <xref target="RELIABILITY_2" format="default"/>. </t>
+	  <t>The packet loss rates in wireless links between XR devices and the Edge server can be as high as 2% or more  <xref target="WIRELESS_1" format="default"/>. </t>
 	 <t> Finally, XR applications interact with each other on a time scale of a round-trip-time propagation
 	  and this must be considered when operationalizing a network.</t>
 
@@ -310,7 +308,7 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
         <name>Acknowledgements</name>
         <t>
 		Many Thanks to Spencer Dawkins, Rohit Abhishek, Jake Holland, Kiran Makhijani
-		and Ali Begen for providing very helpful feedback suggestions and comments.
+		,Ali Begen and Cullen Jennings for providing very helpful feedback suggestions and comments.
 		
         </t>
 
@@ -322,7 +320,6 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
     <references>
       <name>Informative References</name>
       <xi:include href="https://xml2rfc.ietf.org/public/rfc/bibxml/reference.RFC.2119.xml"/>
-      <xi:include href="https://datatracker.ietf.org/doc/bibxml3/draft-ietf-mops-streaming-opcons.xml"/>
       <reference anchor="DEV_HEAT_1" target="">
         <front>
           <title> Draining our Glass: An Energy and Heat characterization of Google Glass</title>
@@ -924,28 +921,7 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
       </reference>
 	
 	
-	  <reference anchor="RELIABILITY_1" target="">
-        <front>
-          <title> 3GPP TR 38.913: Study on Scenarios and Requirements for Next Generation Access Technologies.</title>
-          <author initials="" surname="3GPP" fullname="3GPP">
-            <organization/>
-          </author>
-          <date year="2018"/>
-        </front>
-        <seriesInfo name="" value="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=2996"/>
-      </reference>
 	
-	
-	  <reference anchor="RELIABILITY_2" target="">
-        <front>
-          <title> 3GPP TR 22.261: Service Requirements For The 5G System.</title>
-          <author initials="" surname="3GPP" fullname="3GPP">
-            <organization/>
-          </author>
-          <date year="2019"/>
-        </front>
-        <seriesInfo name="" value="https://portal.3gpp.org/desktopmodules/Specifications/SpecificationDetails.aspx?specificationId=3107"/>
-      </reference>
 	
 	
 	
