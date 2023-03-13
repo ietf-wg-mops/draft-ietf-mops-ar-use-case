@@ -263,12 +263,66 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
 	
 	  <section anchor="traffic_workload" numbered="true" toc="default">
         <name>Traffic Workload</name>
+
+	
         <t>
 		As discussed earlier, the parameters that capture the characteristics of XR application behavior are heavy-tailed.
 		Examples of such parameters include the distribution of arrival times between XR application invocation, the amount
-		of data transferred, and the inter-arrival times of packets within a session.. As a result, any traffic model based on
+		of data transferred, and the inter-arrival times of packets within a session.As a result, any traffic model based on
 		such parameters are themselves heavy-tailed. Using
-		these models to predict performance under alternative resource allocations by the network operator is challenging. For example, both uplink and downlink traffic to a UE device has parameters such as volume of XR data, burst time, and idle time that are heavy tailed. If multiple XR device users are accessing the wireless link to the closest edge server as in our use case, the heavy tailed sources get aggregated into long range dependent traffic. Such traffic can have long bursts and various traffic parameters from widely seperated time can show correlation.As a result, the edge servers to which multiple XR devices are connected wirelessly could face long bursts of traffic. Thus, the provisioning of edge servers in terms of the number of servers, the topology, where to place them, the assignment of link capacity, CPUs and GPUs should keep the above factors in mind.
+		these models to predict performance under alternative resource allocations by the network operator is challenging. For example, both uplink and downlink traffic to a UE device has parameters such as volume of XR data, burst time, and idle time that are heavy tailed.
+      </t>
+      <t>
+         <xref target="TABLE_1" format="default"/> below shows various XR applications and their associated throughput requirements <xref target="METRICS_1" format="default"/>. Our use case envisages a 6DoF video or point cloud and so will require 200 to 1000Mbps of bandwidth.
+As seen from the table, the XR application such as our use case transmit a larger amount of data per unit time as compared to traditional video applications. As a result, issues arising out of heavy tailed parameters such as long-range dependent traffic <xref target="METRICS_2" format="default"/>, self-similar traffic <xref target="METRICS_3" format="default"/>, would be experienced at time scales of milliseconds and microseconds rather than hours or seconds. Additionally, burstiness at the time scale of tens of milliseconds due to multi-fractal spectrum of traffic will be experienced <xref target="METRICS_4" format="default"/>.
+Long-range dependent traffic can have long bursts and various traffic parameters from widely separated time can show correlation. Self-similar traffic contains bursts at a wide range of time scales. Multi-fractal spectrum bursts for traffic summarizes the statistical distribution of local scaling exponents found in a traffic trace.
+The operational consequences of XR traffic having characteristics such as long-range dependency, and self-similarity is that the edge servers to which multiple XR devices are connected wirelessly could face long bursts of traffic. In addition, multi-fractal spectrum burstiness at the scale of milli-seconds could induce jitter contributing to motion sickness.
+The operators of edge servers will need to run a 'managed edge cloud service' <xref target="METRICS_5" format="default"/> to deal with the above problems. Functionalities that such a managed edge cloud service could operationally provide include dynamic placement of XR servers, mobility support and energy management <xref target="METRICS_6" format="default"/>. Providing Edge server support for the techniques being developed at the DETNET and RAW Working Groups at the IETF could guarantee performance of XR applications.
+
+      </t>
+
+	  <table anchor="TABLE_1">
+	    <name>Throughput of some XR Applications</name>
+		<thead>
+		 <tr>
+		  <th> Application</th> <th> Throughput Required</th>
+		 </tr>
+		</thead>
+		<tbody>
+		 <tr>
+		  <td> <t>Image and Workflow Downloading</t></td> <td> <t>1 Mbps</t></td>
+		 </tr>
+		
+		 <tr>
+		  <td> <t>Video Conferencing</t></td> <td> <t>2 Mbps</t></td>
+		 </tr>
+		 <tr>
+		  <td> <t>3D Model and Data Visualization</t></td> <td> <t>2 to 20 Mbps</t></td>
+		 </tr>
+		
+		 <tr>
+		  <td> <t>Two way Telepresence</t></td> <td> <t>5 to 25 Mbps</t></td>
+		 </tr>
+		
+		 <tr>
+		  <td> <t>Current-Gen 360 degree video (4K)</t></td> <td> <t>10 to 50 Mbps</t></td>
+		 </tr>
+		
+		 <tr>
+		  <td> <t>Next-Gen 360 degree video (8K, 90+ FPS, HDR, Stereoscopic)</t></td> <td> <t>50 to 200 Mbps</t></td>
+		 </tr>
+		
+		 <tr>
+		  <td> <t>6DoF Video or Point Cloud</t></td> <td> <t>200 to 1000 Mbps</t></td>
+		 </tr>
+		
+		</tbody>
+	  </table>
+
+
+
+      <t>
+ Thus, the provisioning of edge servers in terms of the number of servers, the topology, where to place them, the assignment of link capacity, CPUs and GPUs should keep the above factors in mind.
 		
         </t>
 
@@ -294,8 +348,56 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
       </ul>
 	
 	  <t>The packet loss rates in wireless links between XR devices and the Edge server can be as high as 2% or more  <xref target="WIRELESS_1" format="default"/>. </t>
-	 <t> Finally, XR applications interact with each other on a time scale of a round-trip-time propagation
+	 <t> Additionally, XR applications interact with each other on a time scale of a round-trip-time propagation
 	  and this must be considered when operationalizing a network.</t>
+
+
+         <t>
+            The following <xref target="TABLE_2" format="default"/> <xref target="METRICS_6" format="default"/> shows a taxonomy of applications with their associated expected end-to-end latencies and bandwidths. Our use case requires an end-to-end latency of 20ms at most and preferably between 7-15ms as discussed earlier. The required bandwidth for our use case as discussed in section 5.2 is 200Mbps-1000Mbps.
+Since our use case envisages multiple users running the XR applications on their devices, and connected to an edge server that is closest to them, these latency and bandwidth connections will grow linearly with the number of users. The operators should match the network provisioning to the maximum number of tourists that can be supported by a link to an edge server.
+
+         </t>
+
+
+<table anchor="TABLE_2">
+	    <name>Traffic Performance Metrics of Selected XR Applications</name>
+		<thead>
+		 <tr>
+		  <th> Application</th> <th> Expected End-To-End Latency</th>  <th> Expected Data Latency</th> <th> Possible Implementations/ Examples</th>
+		 </tr>
+		</thead>
+		<tbody>
+		 <tr>
+		  <td> <t>AR-based remote surgery with uncompressed 4K (3840x2160 pixels) 120 fps HDR 10-bit real time video stream </t></td>
+		  <td> <t> Less than 750 microseconds</t></td> <td>
+		  <t> Greater than 30 Gbps</t></td>
+		  <td> <t>World's first remote surgery over 5G </t></td>
+		 </tr>
+		
+		 <tr>
+		  <td> <t>Mobile AR based remote assistance with uncompressed 4K  (1920x1080 pixels) 120 fps HDR 10-bit real-time video stream</t></td>
+		  <td> <t>Less than 10 milliseconds</t></td>
+		  <td> <t>Greater than 7.5 Gbps</t></td>
+		  <td> <t>Assisting maintenance technicians, Industry 4.0 remote maintenance, remote assistance in robotics industry</t></td>
+		 </tr>
+		 <tr>
+		  <td> <t>Indoor and localized outdoor navigation </t></td>
+		  <td> <t>Less than 20 milliseconds</t></td>
+		  <td> <t>50 to 200 Mbps</t></td>
+		  <td> <t>Theme Parks, Shopping Malls, Archaeological Sites, Museum guidance</t></td>
+		 </tr>
+		
+		 <tr>
+		  <td> <t>Cloud-based Mobile AR applications</t></td>
+		  <td> <t>Less than 50 milliseconds</t></td>
+		  <td> <t>50 to 100 Mbps</t></td>
+		  <td> <t>Google Live View, AR-enhanced Google Translate </t></td>
+		 </tr>
+		
+
+		
+		</tbody>
+	  </table>
 
 
 	
@@ -919,6 +1021,141 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
         </front>
         <seriesInfo name="In" value="Proceedings of the 2002 ACM SIGMETRICS international conference on Measurement and modeling of computer systems, pp.  195-205."/>
       </reference>
+
+
+<reference anchor="METRICS_1" target="">
+        <front>
+          <title>  Augmented and Virtual Reality: The first Wave of Killer Apps.</title>
+          <author initials="" surname="ABI Research" fullname="ABI Research">
+            <organization/>
+          </author>
+		
+		
+		
+          <date year="2017"/>
+        </front>
+        <seriesInfo name="" value="https://gsacom.com/paper/augmented-virtual-reality-first-wave-5g-killer-apps-qualcomm-abi-research/"/>
+      </reference>
+
+<reference anchor="METRICS_2" target="">
+        <front>
+          <title> Wide Area Traffic: The Failure of Poisson Modelling.</title>
+          <author initials="V." surname="Paxon" fullname="Vern Paxon">
+            <organization/>
+          </author>
+		
+		  <author initials="S." surname="Floyd" fullname="Sally Floyd">
+            <organization/>
+          </author>
+		
+		
+		
+          <date year="1995"/>
+        </front>
+        <seriesInfo name="In" value="IEEE/ACM Transactions on Networking, pp.  226-244."/>
+      </reference>
+
+<reference anchor="METRICS_3" target="">
+        <front>
+          <title> Self-Similarity Through High Variability: Statistical Analysis and Ethernet LAN Traffic at Source Level.</title>
+          <author initials="W." surname="Willinger" fullname="Walter Willinger">
+            <organization/>
+          </author>
+		
+         <author initials="M.S." surname="Taqqu" fullname="Murad S. Taqqu">
+            <organization/>
+          </author>
+
+
+         <author initials="R." surname="Sherman" fullname="Robert Sherman">
+            <organization/>
+          </author>
+
+
+         <author initials="D.V." surname="Wilson" fullname="Daniel V. Wilson">
+            <organization/>
+          </author>
+		
+		
+		
+          <date year="1997"/>
+        </front>
+        <seriesInfo name="In" value="IEEE/ACM Transactions on Networking, pp.  71-86."/>
+      </reference>
+
+
+<reference anchor="METRICS_4" target="">
+        <front>
+          <title> Multiscale Analysis and Data Networks.</title>
+          <author initials="A.C." surname="Gilbert" fullname="A. C. Gilbert">
+            <organization/>
+          </author>
+
+		
+          <date year="2001"/>
+        </front>
+        <seriesInfo name="In" value="Applied and Computational Harmonic Analysis, pp.  185-202."/>
+      </reference>
+
+
+
+<reference anchor="METRICS_5" target="">
+        <front>
+          <title> Site Reliability Engineering: How Google Runs Production Systems.</title>
+          <author initials="B." surname="Beyer" fullname="Betsy Beyer">
+            <organization/>
+          </author>
+		
+         <author initials="C." surname="Jones" fullname="Chris Jones">
+            <organization/>
+          </author>
+
+
+         <author initials="J." surname="Petoff" fullname="Jennifer Petoff">
+            <organization/>
+          </author>
+
+
+         <author initials="N.R." surname="Murphy" fullname="Niall Richard Murphy">
+            <organization/>
+          </author>
+		
+		
+		
+          <date year="2016"/>
+        </front>
+        <seriesInfo name="" value="O'Reilly Media, Inc."/>
+      </reference>
+
+
+<reference anchor="METRICS_6" target="">
+        <front>
+          <title> A survey on mobile augmented reality with 5G mobile edge computing: architectures, applications, and technical aspects.</title>
+          <author initials="Y." surname="Siriwardhana" fullname="Yushan Siriwardhana">
+            <organization/>
+          </author>
+		
+         <author initials="P." surname="Porambage" fullname="Pawani Porambage">
+            <organization/>
+          </author>
+
+
+         <author initials="M." surname="Liyanage" fullname="Madhusanka Liyanage">
+            <organization/>
+          </author>
+
+
+         <author initials="M." surname="Ylianttila" fullname="Mika Ylianttila">
+            <organization/>
+          </author>
+		
+		
+		
+          <date year="2021"/>
+        </front>
+        <seriesInfo name="In" value="IEEE Communications Surveys and Tutorials, Vol 23, No. 2"/>
+      </reference>
+
 	
 	
 	
