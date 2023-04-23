@@ -29,14 +29,14 @@
       <organization>Ericsson</organization>
       <address>
         <postal>
-          <street>8275 route Transcanadienne</street>
-          <city>Montreal</city>
-          <code>H4S 0B6</code>
+          <street>349 Terry Fox Drive</street>
+          <city>Ottawa Ontario</city>
+          <code>K2K 2V6</code>
           <country>Canada</country>
           <region/>
         </postal>
         <phone/>
-        <email>rahmansakbar@yahoo.com</email>
+        <email>Akbar.Rahman@ericsson.com</email>
         <uri/>
       </address>
     </author>
@@ -363,7 +363,7 @@ Since our use case envisages multiple users running the XR applications on their
 	    <name>Traffic Performance Metrics of Selected XR Applications</name>
 		<thead>
 		 <tr>
-		  <th> Application</th> <th> Expected End-To-End Latency</th>  <th> Expected Data Latency</th> <th> Possible Implementations/ Examples</th>
+		  <th> Application</th> <th> Expected End-To-End Latency</th>  <th> Expected Data Capacity</th> <th> Possible Implementations/ Examples</th>
 		 </tr>
 		</thead>
 		<tbody>
