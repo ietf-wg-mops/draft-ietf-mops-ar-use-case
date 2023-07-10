@@ -239,24 +239,7 @@ communication between an Edge server and User Equipment(UE)  <xref target="URLLC
 		change frequently as the user moves around with their AR device <xref target="UBICOMP" format="default"/>.
 		
       </t>
-      <t>
-        Thus, once the offloaded computationally intensive processing is completed on the Edge Computing, the video is streamed to the
-		user with the help of an ABR algorithm which needs to meet the following requirements <xref target="ABR_1" format="default"/>:
-			
-      </t>
-      <ul spacing="normal">
-        <li>Dynamically changing ABR parameters: The ABR algorithm must be able to dynamically change parameters given the
-			   heavy-tailed nature of network throughput.  This, for example, may be accomplished by AI/ML processing on the Edge Computing
-			   on a per client or global basis.
-			   </li>
-        <li>Handling conflicting QoE requirements: QoE goals often require high bit-rates, and low frequency of buffer refills. However
-			   in practice, this can lead to a conflict between those goals. For example, increasing the bit-rate might
-			   result in the need to fill up the buffer more frequently as the buffer capacity might be limited on the AR device.
-			   The ABR algorithm must be able to handle this situation.</li>
-        <li>Handling side effects of deciding a specific bit rate: For example, selecting a bit rate of a particular value might result
-			   in the ABR algorithm not changing to a different rate so as to ensure a non-fluctuating bit-rate and the
-			   resultant smoothness of video quality . The ABR algorithm must be able to handle this situation.</li>
-      </ul>
+
     </section>
     <section anchor="ArTraffic" numbered="true" toc="default">
       <name>AR Network Traffic</name>
@@ -353,7 +336,12 @@ The operators of edge servers will need to run a 'managed edge cloud service' <x
 
 
          <t>
-            The following <xref target="TABLE_2" format="default"/> <xref target="METRICS_6" format="default"/> shows a taxonomy of applications with their associated expected end-to-end latencies and bandwidths. Our use case requires an end-to-end latency of 20ms at most and preferably between 7-15ms as discussed earlier. The required bandwidth for our use case as discussed in section 5.2 is 200Mbps-1000Mbps.
+            The following <xref target="TABLE_2" format="default"/> <xref target="METRICS_6" format="default"/> shows a taxonomy of applications with their associated required response times and bandwidths. Response times can
+be defined as the time interval between the end of a request submission and the end of the corresponding response from a system. If the XR device offloads a task to an edge server, the response time of the server is the round trip time from when a data packet is sent from the XR device until a response is received. Note that the required response time provides an upper bound on the sum of the time taken by computational tasks such as processing of scenes, generation of images and the round trip time. This response time depends only on the Quality of Service (QOS) required by an application. The response time is therefore independent of the underlying technology of the network and the time taken by the computational tasks.
+
+         </t>
+        <t>
+Our use case requires a response time of 20ms at most and preferably between 7-15ms as discussed earlier. The required bandwidth for our use case as discussed in section 5.2 is 200Mbps-1000Mbps.
 Since our use case envisages multiple users running the XR applications on their devices, and connected to an edge server that is closest to them, these latency and bandwidth connections will grow linearly with the number of users. The operators should match the network provisioning to the maximum number of tourists that can be supported by a link to an edge server.
 
          </t>
@@ -363,16 +351,11 @@ Since our use case envisages multiple users running the XR applications on their
 	    <name>Traffic Performance Metrics of Selected XR Applications</name>
 		<thead>
 		 <tr>
-		  <th> Application</th> <th> Expected End-To-End Latency</th>  <th> Expected Data Capacity</th> <th> Possible Implementations/ Examples</th>
+		  <th> Application</th> <th> Required Response Time</th>  <th> Expected Data Capacity</th> <th> Possible Implementations/ Examples</th>
 		 </tr>
 		</thead>
 		<tbody>
-		 <tr>
-		  <td> <t>AR-based remote surgery with uncompressed 4K (3840x2160 pixels) 120 fps HDR 10-bit real time video stream </t></td>
-		  <td> <t> Less than 750 microseconds</t></td> <td>
-		  <t> Greater than 30 Gbps</t></td>
-		  <td> <t>World's first remote surgery over 5G </t></td>
-		 </tr>
+		
 		
 		 <tr>
 		  <td> <t>Mobile AR based remote assistance with uncompressed 4K  (1920x1080 pixels) 120 fps HDR 10-bit real-time video stream</t></td>
