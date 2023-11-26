@@ -389,55 +389,24 @@ Since our use case envisages multiple users running the XR applications on their
 	</section>
 
 
+<section anchor="iana" numbered="true" toc="default">
+        <name>IANA Considerations</name>
+        <t>
+	    This document has no IANA actions.
+		
+        </t>
+</section>
+
+
         <section anchor="Sec" numbered="true" toc="default">
         <name>Security Considerations</name>
         <t>
-	    In this section, we briefly present the operational security considerations of our use case. A
-            more detailed analysis of these considerations can be found in the references.
-            There are two dimensions of the operational security to deploy the presented use case:
-            (i) XR-device related operational security issues and (ii) Edge server related operational security  issues.
+	    The security issues for the presented use case are similar to other streaming applications. This document itself introduces no new security issues.
+
 		
         </t>
-<section anchor="xrsec" numbered="true" toc="default">
-        <name>XR-device related operational security issues</name>
-      <t>
-         The XR devices could be stolen or tampered with and so the operator of the use case should not rely on the integrity of these devices <xref target="DIST" format="default"/>.
-</t>
-
-<t>
-The XR devices are already running computationally intensive tasks that drain battery power and so the operator must carefully select an appropriate cryptographic system for communication that takes these issues into consideration.
-</t>
-<t>
-Finally, the operator must avoid deploying security protocols that rely on the XR devices being continuously connected to the edge server.
-
-      </t>
-
-
-</section>
-
-
-<section anchor="edgesec" numbered="true" toc="default">
-        <name>Edge Server related operational security issues</name>
-
-
-
-<t>
-   The operational security considerations for Edge server of the presented use case are similar to those for cloud data centres. The National Institute of Standards and Technology (NIST) <xref target="NIST1" format="default"/> details the operational issues of security for such data centres. The edge servers in the presented use case run as a private cloud of the operator. Operators will need to consider physical security of the servers, disks, routers, cables, power etc.
-</t>
-
-<t>
-Additionally, the XR software being deployed for the use case will need to be audited for software error categories <xref target="CWE" format="default"/> such as insecure interaction between components, risky resource management, and porous defences.
-</t>
-
-<t>
- Finally, security maintenance of the XR system running on the edge servers will require <xref target="NIST2" format="default"/> monitoring and analysing logging information, performing regular back-ups, recovering from security compromises, regular testing of system security and using processes to patch and update all critical software, and to monitor and revise the configuration as needed.
-</t>
-
-
-
-      </section>
 	
-</section>
+       </section>
 	
 	<section anchor="ack" numbered="true" toc="default">
         <name>Acknowledgements</name>
@@ -1192,78 +1161,6 @@ Additionally, the XR software being deployed for the use case will need to be au
 	
 
 
-<reference anchor="DIST" target="">
-        <front>
-          <title> Distributed Systems: Concepts and Design</title>
-          <author initials="G" surname="Coulouris" fullname="George Coulouris">
-            <organization/>
-          </author>
-          <author initials="J" surname="Dollimore" fullname="Jean Dollimore">
-            <organization/>
-          </author>
-
-          <author initials="T" surname="Kindberg" fullname="Tim Kindberg">
-            <organization/>
-          </author>
-          <author initials="G" surname="Blair" fullname="Gordon Blair">
-            <organization/>
-          </author>
-
-
-
-          <date year="2011"/>
-        </front>
-        <seriesInfo name="" value="Addison Wesley"/>
-      </reference>
-	
-
-<reference anchor="NIST1" target="">
-        <front>
-          <title> NIST SP 800-146: Cloud Computing Synopsis and Recommendations</title>
-          <author initials="" surname="" fullname="NIST">
-            <organization/>
-          </author>
-
-
-
-
-          <date year="2012"/>
-        </front>
-        <seriesInfo name="" value="National Institute of Standards and Technology, US Department of Commerce"/>
-      </reference>
-
-
-
-<reference anchor="CWE" target="">
-        <front>
-          <title> CWE/SANS TOP 25 Most Dangerous Software Errorss</title>
-          <author initials="" surname="" fullname="SANS Institute">
-            <organization/>
-          </author>
-
-
-
-
-          <date year="2012"/>
-        </front>
-        <seriesInfo name="" value="Common Weakness Enumeration, SANS Institute"/>
-      </reference>
-	
-
-<reference anchor="NIST2" target="">
-        <front>
-          <title> NIST SP 800-123: Guide to General Server Security</title>
-          <author initials="" surname="" fullname="NIST">
-            <organization/>
-          </author>
-
-
-
-
-          <date year="2008"/>
-        </front>
-        <seriesInfo name="" value="National Institute of Standards and Technology, US Department of Commerce"/>
-      </reference>
 
 	
 	
