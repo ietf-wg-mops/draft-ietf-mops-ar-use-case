@@ -5,8 +5,8 @@
 MOPS                                                          R. Krishna
 Internet-Draft                               InterDigital Europe Limited
 Intended status: Informational                                 A. Rahman
-Expires: 29 May 2024                                            Ericsson
-                                                        26 November 2023
+Expires: 5 September 2024                                       Ericsson
+                                                            4 March 2024
 
 
  Media Operations Use Case for an Extended Reality Application on Edge
@@ -44,11 +44,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 May 2024.
+   This Internet-Draft will expire on 5 September 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -71,11 +71,10 @@ Table of Contents
    5.  AR Network Traffic
      5.1.  Traffic Workload
      5.2.  Traffic Performance Metrics
-   6.  Security Considerations
-     6.1.  XR-device related operational security issues
-     6.2.  Edge Server related operational security issues
-   7.  Acknowledgements
-   8.  Informative References
+   6.  IANA Considerations
+   7.  Security Considerations
+   8.  Acknowledgements
+   9.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -448,59 +447,23 @@ Table of Contents
 
       Table 2: Traffic Performance Metrics of Selected XR Applications
 
-6.  Security Considerations
+6.  IANA Considerations
 
-   In this section, we briefly present the operational security
-   considerations of our use case.  A more detailed analysis of these
-   considerations can be found in the references.  There are two
-   dimensions of the operational security to deploy the presented use
-   case: (i) XR-device related operational security issues and (ii) Edge
-   server related operational security issues.
+   This document has no IANA actions.
 
-6.1.  XR-device related operational security issues
+7.  Security Considerations
 
-   The XR devices could be stolen or tampered with and so the operator
-   of the use case should not rely on the integrity of these devices
-   [DIST].
+   The security issues for the presented use case are similar to other
+   streaming applications.  This document itself introduces no new
+   security issues.
 
-   The XR devices are already running computationally intensive tasks
-   that drain battery power and so the operator must carefully select an
-   appropriate cryptographic system for communication that takes these
-   issues into consideration.
-
-   Finally, the operator must avoid deploying security protocols that
-   rely on the XR devices being continuously connected to the edge
-   server.
-
-6.2.  Edge Server related operational security issues
-
-   The operational security considerations for Edge server of the
-   presented use case are similar to those for cloud data centres.  The
-   National Institute of Standards and Technology (NIST) [NIST1] details
-   the operational issues of security for such data centres.  The edge
-   servers in the presented use case run as a private cloud of the
-   operator.  Operators will need to consider physical security of the
-   servers, disks, routers, cables, power etc.
-
-   Additionally, the XR software being deployed for the use case will
-   need to be audited for software error categories [CWE] such as
-   insecure interaction between components, risky resource management,
-   and porous defences.
-
-   Finally, security maintenance of the XR system running on the edge
-   servers will require [NIST2] monitoring and analysing logging
-   information, performing regular back-ups, recovering from security
-   compromises, regular testing of system security and using processes
-   to patch and update all critical software, and to monitor and revise
-   the configuration as needed.
-
-7.  Acknowledgements
+8.  Acknowledgements
 
    Many Thanks to Spencer Dawkins, Rohit Abhishek, Jake Holland, Kiran
    Makhijani ,Ali Begen and Cullen Jennings for providing very helpful
    feedback suggestions and comments.
 
-8.  Informative References
+9.  Informative References
 
    [ABR_1]    Mao, H., Netravali, R., and M. Alizadeh, "Neural Adaptive
               Video Streaming with Pensieve", In Proceedings of the
@@ -547,9 +510,6 @@ Table of Contents
               Reachability Study.", In Proceedings of the Web Conference
               2021, pp. 295-304, 2021.
 
-   [CWE]      "CWE/SANS TOP 25 Most Dangerous Software Errorss",  Common
-              Weakness Enumeration, SANS Institute, 2012.
-
    [DEV_HEAT_1]
               LiKamWa, R., Wang, Z., Carroll, A., Lin, F., and L. Zhong,
               "Draining our Glass: An Energy and Heat characterization
@@ -560,10 +520,6 @@ Table of Contents
               Matsuhashi, K., Kanamoto, T., and A. Kurokawa, "Thermal
               model and countermeasures for future smart glasses.",
               In Sensors, 20(5), p.1446., 2020.
-
-   [DIST]     Coulouris, G., Dollimore, J., Kindberg, T., and G. Blair,
-              "Distributed Systems: Concepts and Design",  Addison
-              Wesley, 2011.
 
    [EDGE_1]   Satyanarayanan, M., "The Emergence of Edge Computing",
               In Computer 50(1) pp. 30-39, 2017.
@@ -635,14 +591,6 @@ Table of Contents
               mobile edge computing: architectures, applications, and
               technical aspects.", In IEEE Communications Surveys and
               Tutorials, Vol 23, No. 2, 2021.
-
-   [NIST1]    "NIST SP 800-146: Cloud Computing Synopsis and
-              Recommendations",  National Institute of Standards and
-              Technology, US Department of Commerce, 2012.
-
-   [NIST2]    "NIST SP 800-123: Guide to General Server
-              Security",  National Institute of Standards and
-              Technology, US Department of Commerce, 2008.
 
    [NOISE]    Fischer, J., Bartz, D., and W. Straßer, "Enhanced visual
               realism by incorporating camera image effects.",
