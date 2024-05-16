@@ -22,17 +22,17 @@
  
        
     " name="description">
-<meta content="xml2rfc 3.20.0" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="draft-ietf-mops-ar-use-case-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.20.0
-    Python 3.11.8
+  xml2rfc 3.21.0
+    Python 3.11.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.2.0
+    platformdirs 4.2.1
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1037,11 +1037,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">MOPS AR Use Case</td>
-<td class="right">March 2024</td>
+<td class="right">May 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Krishna &amp; Rahman</td>
-<td class="center">Expires 5 September 2024</td>
+<td class="center">Expires 17 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1054,17 +1054,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-mops-ar-use-case-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-03-04" class="published">4 March 2024</time>
+<time datetime="2024-05-16" class="published">16 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-09-05">5 September 2024</time></dd>
+<dd class="expires"><time datetime="2024-11-17">17 November 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
       <div class="author-name">R. Krishna</div>
-<div class="org">InterDigital Europe Limited</div>
 </div>
 <div class="author">
       <div class="author-name">A. Rahman</div>
@@ -1107,7 +1106,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 September 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1165,19 +1164,22 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-conclusion" class="internal xref">Conclusion</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-acknowledgements" class="internal xref">Acknowledgements</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
+            <p id="section-toc.1-1.10.1"><a href="#appendix-A" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1205,28 +1207,41 @@ svg :is([fill="white"], [fill^="#fff"]) {
  Consequently, in order to run applications with XR characteristics
  on mobile devices, computationally intensive tasks need to be offloaded to resources provided by Edge Computing.<a href="#section-1-2" class="pilcrow">¶</a></p>
 <p id="section-1-3">
- Edge Computing is an emerging paradigm where computing resources and storage are made available in close
- network proximity at the edge of the Internet to mobile devices and sensors <span>[<a href="#EDGE_1" class="cite xref">EDGE_1</a>]</span>, <span>[<a href="#EDGE_2" class="cite xref">EDGE_2</a>]</span>.
+ Edge Computing is an emerging paradigm where for the purpose of this document, computing resources and storage are made available in close
+ network proximity at the edge of the Internet to mobile devices and sensors <span>[<a href="#EDGE_1" class="cite xref">EDGE_1</a>]</span>, <span>[<a href="#EDGE_2" class="cite xref">EDGE_2</a>]</span>. A computing resource or storage is in
+ close network proximity to a mobile device or sensor if there is a short and high-capacity network path to it
+ such that the latency and bandwidth requirements of applications running on those mobile devices or sensors can be met.
  These edge computing devices use cloud technologies that enable them to support offloaded XR applications. In particular, the edge devices deploy
- cloud computing implementation techniques such as disaggregation (using SDN to break vertically integrated systems into independent components- these components can have open interfaces which are standard, well documented and not proprietary), virtualization (being able to run multiple independent copies of those components such as SDN Controller apps, Virtual Network Functions on a
- common hardware platform) and commoditization ( being able to elastically scale those virtual components across commodity hardware as the workload dictates)
- <span>[<a href="#EDGE_3" class="cite xref">EDGE_3</a>]</span>. Such techniques enable XR applications requiring low-latency and high bandwidth to be delivered by mini-clouds
- running on proximate edge devices. This is because the disaggregated components can run on proximate edge devices rather than on remote cloud several hops away and deliver low latency, high bandwidth service to offloaded applications <span>[<a href="#EDGE_2" class="cite xref">EDGE_2</a>]</span>.<a href="#section-1-3" class="pilcrow">¶</a></p>
-<p id="section-1-4">
+ cloud computing implementation techniques such as <span>[<a href="#EDGE_3" class="cite xref">EDGE_3</a>]</span>:<a href="#section-1-3" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-1-4.1">Disaggregation (using SDN to break vertically integrated systems into independent components- these components can have open interfaces which are standard, well documented and not proprietary),<a href="#section-1-4.1" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-4.2">Virtualization (being able to run multiple independent copies of those components such as SDN Controller apps, Virtual Network Functions on a
+ common hardware platform).<a href="#section-1-4.2" class="pilcrow">¶</a>
+</li>
+        <li class="normal" id="section-1-4.3">Commoditization (being able to elastically scale those virtual components across commodity hardware as the workload dictates).<a href="#section-1-4.3" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="section-1-5">
+  Such techniques enable XR applications requiring low-latency and high bandwidth to be delivered by mini-clouds
+ running on proximate edge devices. This is because the disaggregated components can run on proximate edge devices rather than on remote cloud several hops away and deliver low latency, high bandwidth service to offloaded applications <span>[<a href="#EDGE_2" class="cite xref">EDGE_2</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
+<p id="section-1-6">
    This document discusses the issues involved when edge computing resources are offered by network operators to
-   operationalize the requirements of XR applications running on devices with various form factors. Examples of such form factors
+   operationalize the requirements of XR applications running on devices with various form factors. A network operator for the purposes of this
+   document is any organization or individual that manages or operates the compute resources or storage in close network proximity
+   to a mobile device or sensors. Examples of form factors
    include Head Mounted Displays (HMD) such as Optical-see through HMDs and video-see-through HMDs and Hand-held displays.
    Smart phones with video cameras and location sensing capabilities using systems such as a global navigation satellite system (GNSS) are another example of such devices. These devices have limited
    battery capacity and dissipate heat when running. Besides as the user of these devices moves around as they run the
    XR application, the wireless latency and bandwidth available to the devices fluctuates and the communication link itself
-   might fail. As a result algorithms such as those based on adaptive-bit-rate techniques that base their policy on heuristics
+   might fail. As a result, algorithms such as those based on adaptive-bit-rate techniques that base their policy on heuristics
    or models of deployment perform sub-optimally in such dynamic environments <span>[<a href="#ABR_1" class="cite xref">ABR_1</a>]</span>.
    In addition, network operators can expect that the parameters that characterize the expected behavior of XR applications
    are heavy tailed. Heaviness of tails is defined as the difference from the normal distribution in the proportion of the values that fall a long way from the mean <span>[<a href="#HEAVY_TAIL_3" class="cite xref">HEAVY_TAIL_3</a>]</span>. Such workloads require appropriate resource management policies to be used on the Edge.
    The service requirements of XR applications are also challenging when compared to the current video applications.
    In particular several Quality of Experience (QoE) factors such as motion sickness are unique to XR applications and must be considered when operationalizing a network.
 
- This document motivates these issues with a use-case that is presented in the following sections.<a href="#section-1-4" class="pilcrow">¶</a></p>
+ This document motivates these issues with a use-case that is presented in the following sections.<a href="#section-1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="use_case">
@@ -1258,19 +1273,16 @@ svg :is([fill="white"], [fill^="#fff"]) {
  The task of processing a scene can be broken down into a pipeline of three consecutive subtasks namely tracking, followed by an acquisition of a
  model of the real world, and finally registration <span>[<a href="#AUGMENTED" class="cite xref">AUGMENTED</a>]</span>.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.1-2">
- Tracking: This includes tracking of the three dimensional coordinates and six dimensional pose (coordinates and orientation)
- of objects in the real world <span>[<a href="#AUGMENTED" class="cite xref">AUGMENTED</a>]</span>.
- The XR application that runs on the mobile device needs to track the pose
- of the user's head, eyes and the
- objects that are in view. This requires tracking natural features that are then used in the next stage of the pipeline.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+ Tracking: The XR application that runs on the mobile device needs to track the six-dimensional pose (translational in the three perpendicular axes and rotational about those three axes)
+ of the user's head, eyes and the objects that are in view <span>[<a href="#AUGMENTED" class="cite xref">AUGMENTED</a>]</span>. This requires tracking natural features (for example points or edges of objects) that are then used in the next stage of the pipeline.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
 <p id="section-2.1-3">
- Acquisition of a model of the real world: The tracked natural features are used to develop an annotated
+ Acquisition of a model of the real world: The tracked natural features are used to develop a model of the real world. One of the ways this is done is to develop an annotated
  point cloud (a set of points in space that are annotated with descriptors) based model that is then stored in a database. To ensure that this database can be scaled up, techniques such as
- combining a client side simultaneous tracking and mapping and a server-side localization
- are used<span>[<a href="#SLAM_1" class="cite xref">SLAM_1</a>]</span>, <span>[<a href="#SLAM_2" class="cite xref">SLAM_2</a>]</span>, <span>[<a href="#SLAM_3" class="cite xref">SLAM_3</a>]</span>, <span>[<a href="#SLAM_4" class="cite xref">SLAM_4</a>]</span>.Another model that can be built is based on polygon mesh and texture mapping technique. The polygon mesh encodes a 3D object's shape which is expressed as a collection of small flat surfaces that are polygons. In texture mapping, color patterns are mapped on to an object's surface. A third modelling technique uses a 2D lightfield that describes the intensity or color of the light rays arriving at a single point from arbitrary directions. Such a 2D lightfield is stored as a two-dimensional table. Assuming distant light sources, the single point is approximately valid for small scenes. For larger scenes, many 3D positions are additionally stored making the table 5D <span>[<a href="#AUGMENTED" class="cite xref">AUGMENTED</a>]</span>.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
+ combining a client-side simultaneous tracking and mapping and a server-side localization
+ are used to construct a model of the real world <span>[<a href="#SLAM_1" class="cite xref">SLAM_1</a>]</span>, <span>[<a href="#SLAM_2" class="cite xref">SLAM_2</a>]</span>, <span>[<a href="#SLAM_3" class="cite xref">SLAM_3</a>]</span>, <span>[<a href="#SLAM_4" class="cite xref">SLAM_4</a>]</span>. Another model that can be built is based on polygon mesh and texture mapping technique. The polygon mesh encodes a 3D object's shape which is expressed as a collection of small flat surfaces that are polygons. In texture mapping, color patterns are mapped on to an object's surface. A third modelling technique uses a 2D lightfield that describes the intensity or color of the light rays arriving at a single point from arbitrary directions. Such a 2D lightfield is stored as a two-dimensional table. Assuming distant light sources, the single point is approximately valid for small scenes. For larger scenes, many 3D positions are additionally stored making the table 5D. A set of all such points (either 2D or 5D lightfield) can then be used to construct a model of the real world <span>[<a href="#AUGMENTED" class="cite xref">AUGMENTED</a>]</span>.<a href="#section-2.1-3" class="pilcrow">¶</a></p>
 <p id="section-2.1-4">
  Registration: The coordinate systems, brightness, and color
- of virtual and real objects need to be aligned in a process called registration <span>[<a href="#REG" class="cite xref">REG</a>]</span>.
+ of virtual and real objects need to be aligned with each other and this process is called registration <span>[<a href="#REG" class="cite xref">REG</a>]</span>.
  Once the
  natural features are tracked as discussed above, virtual objects are geometrically aligned with those features by geometric registration. This is followed by
  resolving occlusion that can occur between virtual and the real objects <span>[<a href="#OCCL_1" class="cite xref">OCCL_1</a>]</span>, <span>[<a href="#OCCL_2" class="cite xref">OCCL_2</a>]</span>.
@@ -1289,7 +1301,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         </h3>
 <p id="section-2.2-1">
  The XR application must generate a high-quality video that has the properties described in the previous step
- and overlay the video on the XR device's display- a step called situated visualization. This entails  dealing with registration errors that
+ and overlay the video on the XR device's display- a step called situated visualization. A situated visualization is a visualization in which the virtual objects that need to be seen by the XR user are overlaid correctly on the real world. This entails  dealing with registration errors that
  may arise, ensuring that there is no visual interference <span>[<a href="#VIS_INTERFERE" class="cite xref">VIS_INTERFERE</a>]</span>, and finally maintaining
  temporal coherence by adapting to the movement of user's eyes and head.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
 </section>
@@ -1316,7 +1328,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
  tasks can be offloaded to Edge devices.<a href="#section-3-2" class="pilcrow">¶</a></p>
 <p id="section-3-3">
  
- Another requirement for our use case and similar applications such as 360 degree streaming (streaming of video that represents a view in every direction in 3D space) is that the display on
+ Another requirement for our use case and similar applications such as 360-degree streaming (streaming of video that represents a view in every direction in 3D space) is that the display on
  the XR device should synchronize the visual input with the way the user is moving their head. This synchronization
  is necessary to avoid motion sickness that results from a time-lag between when the user moves their head and
  when the appropriate video scene is rendered. This time lag is often called "motion-to-photon" delay.
@@ -1337,8 +1349,8 @@ communication between an Edge server and User Equipment (UE)  <span>[<a href="#U
   tailored in a fine-grained manner
   to the resource demands and playback the videos with appropriate QoE metrics as the user moves around with the group of tourists.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <p id="section-3-5">
- However, heavy-tailed nature of several  operational parameters make prediction-based  adaptation by ABR algorithms sub-optimal <span>[<a href="#ABR_2" class="cite xref">ABR_2</a>]</span>.
- This is because with such distributions, law of large numbers works too slowly <span>[<a href="#HEAVY_TAIL_2" class="cite xref">HEAVY_TAIL_2</a>]</span>, the mean of sample does not equal the mean of distribution <span>[<a href="#HEAVY_TAIL_2" class="cite xref">HEAVY_TAIL_2</a>]</span>,
+ However, heavy-tailed nature of several  operational parameters makes prediction-based  adaptation by ABR algorithms sub-optimal <span>[<a href="#ABR_2" class="cite xref">ABR_2</a>]</span>.
+ This is because with such distributions, law of large numbers (how long does it take for sample mean to stabilize) works too slowly <span>[<a href="#HEAVY_TAIL_2" class="cite xref">HEAVY_TAIL_2</a>]</span>, the mean of sample does not equal the mean of distribution <span>[<a href="#HEAVY_TAIL_2" class="cite xref">HEAVY_TAIL_2</a>]</span>,
  and as a result standard deviation and variance are unsuitable as metrics for such operational parameters <span>[<a href="#HEAVY_TAIL_1" class="cite xref">HEAVY_TAIL_1</a>]</span>. Other subtle issues with
  these distributions include the "expectation paradox" <span>[<a href="#HEAVY_TAIL_1" class="cite xref">HEAVY_TAIL_1</a>]</span> where the longer the wait for an event, the longer a further need to wait and the
  issue of mismatch between the size and count of events <span>[<a href="#HEAVY_TAIL_1" class="cite xref">HEAVY_TAIL_1</a>]</span>. This makes designing an algorithm for
@@ -1409,7 +1421,7 @@ The operators of edge servers will need to run a 'managed edge cloud service' <s
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
-                <p id="section-4.1-3.2.4.1.1">Two way Telepresence<a href="#section-4.1-3.2.4.1.1" class="pilcrow">¶</a></p>
+                <p id="section-4.1-3.2.4.1.1">Two-way Telepresence<a href="#section-4.1-3.2.4.1.1" class="pilcrow">¶</a></p>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
                 <p id="section-4.1-3.2.4.2.1">5 to 25 Mbps<a href="#section-4.1-3.2.4.2.1" class="pilcrow">¶</a></p>
@@ -1417,7 +1429,7 @@ The operators of edge servers will need to run a 'managed edge cloud service' <s
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
-                <p id="section-4.1-3.2.5.1.1">Current-Gen 360 degree video (4K)<a href="#section-4.1-3.2.5.1.1" class="pilcrow">¶</a></p>
+                <p id="section-4.1-3.2.5.1.1">Current-Gen 360-degree video (4K)<a href="#section-4.1-3.2.5.1.1" class="pilcrow">¶</a></p>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
                 <p id="section-4.1-3.2.5.2.1">10 to 50 Mbps<a href="#section-4.1-3.2.5.2.1" class="pilcrow">¶</a></p>
@@ -1425,7 +1437,7 @@ The operators of edge servers will need to run a 'managed edge cloud service' <s
             </tr>
             <tr>
               <td class="text-left" rowspan="1" colspan="1">
-                <p id="section-4.1-3.2.6.1.1">Next-Gen 360 degree video (8K, 90+ FPS, HDR, Stereoscopic)<a href="#section-4.1-3.2.6.1.1" class="pilcrow">¶</a></p>
+                <p id="section-4.1-3.2.6.1.1">Next-Gen 360-degree video (8K, 90+ FPS, HDR, Stereoscopic)<a href="#section-4.1-3.2.6.1.1" class="pilcrow">¶</a></p>
 </td>
               <td class="text-left" rowspan="1" colspan="1">
                 <p id="section-4.1-3.2.6.2.1">50 to 200 Mbps<a href="#section-4.1-3.2.6.2.1" class="pilcrow">¶</a></p>
@@ -1468,7 +1480,7 @@ The operators of edge servers will need to run a 'managed edge cloud service' <s
 <p id="section-4.2-5"> Additionally, XR applications interact with each other on a time scale of a round-trip-time propagation, and this must be considered when operationalizing a network.<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <p id="section-4.2-6">
             The following <a href="#TABLE_2" class="auto internal xref">Table 2</a> <span>[<a href="#METRICS_6" class="cite xref">METRICS_6</a>]</span> shows a taxonomy of applications with their associated required response times and bandwidths. Response times can
-be defined as the time interval between the end of a request submission and the end of the corresponding response from a system. If the XR device offloads a task to an edge server, the response time of the server is the round trip time from when a data packet is sent from the XR device until a response is received. Note that the required response time provides an upper bound on the sum of the time taken by computational tasks such as processing of scenes, generation of images and the round-trip time. This response time depends only on the Quality of Service (QOS) required by an application. The response time is therefore independent of the underlying technology of the network and the time taken by the computational tasks.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
+be defined as the time interval between the end of a request submission and the end of the corresponding response from a system. If the XR device offloads a task to an edge server, the response time of the server is the round-trip time from when a data packet is sent from the XR device until a response is received. Note that the required response time provides an upper bound on the sum of the time taken by computational tasks such as processing of scenes, generation of images and the round-trip time. This response time depends only on the Quality of Service (QOS) required by an application. The response time is therefore independent of the underlying technology of the network and the time taken by the computational tasks.<a href="#section-4.2-6" class="pilcrow">¶</a></p>
 <p id="section-4.2-7">
 Our use case requires a response time of 20ms at most and preferably between 7-15ms as discussed earlier. The required bandwidth for our use case as discussed in section 5.1, <a href="#TABLE_1" class="auto internal xref">Table 1</a>,  is 200Mbps-1000Mbps.
 Since our use case envisages multiple users running the XR applications on their devices, and connected to an edge server that is closest to them, these latency and bandwidth connections will grow linearly with the number of users. The operators should match the network provisioning to the maximum number of tourists that can be supported by a link to an edge server.<a href="#section-4.2-7" class="pilcrow">¶</a></p>
@@ -1536,36 +1548,48 @@ Since our use case envisages multiple users running the XR applications on their
 </div>
 </section>
 </div>
-<div id="iana">
+<div id="conclusion">
 <section id="section-5">
-      <h2 id="name-iana-considerations">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      <h2 id="name-conclusion">
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-conclusion" class="section-name selfRef">Conclusion</a>
       </h2>
 <p id="section-5-1">
-     This document has no IANA actions.<a href="#section-5-1" class="pilcrow">¶</a></p>
+     In order to operationalize a use case such as the one presented in this document, a network operator could dimension their network to provide a short and high-capacity network path from the edge compute
+     resources or storage to the mobile devices running the XR application. This is required to ensure a response time of 20ms at most and preferably between 7-15ms. Additionally, a bandwidth of 200
+     to 1000Mbps is required by such applications. To deal with the characteristics of XR traffic as discussed in this document, network operators could deploy a managed edge cloud service that operationally
+     provides dynamic placement of XR servers, mobility support and energy management. Although the use case is technically feasible, economic viability is an important factor that must be considered.<a href="#section-5-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="iana">
+<section id="section-6">
+      <h2 id="name-iana-considerations">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+      </h2>
+<p id="section-6-1">
+     This document has no IANA actions.<a href="#section-6-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="Sec">
-<section id="section-6">
+<section id="section-7">
       <h2 id="name-security-considerations">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-6-1">
-     The security issues for the presented use case are similar to other streaming applications. This document itself introduces no new security issues.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">
+     The security issues for the presented use case are similar to other streaming applications. This document itself introduces no new security issues.<a href="#section-7-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ack">
-<section id="section-7">
+<section id="section-8">
       <h2 id="name-acknowledgements">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-acknowledgements" class="section-name selfRef">Acknowledgements</a>
       </h2>
-<p id="section-7-1">
- Many Thanks to Spencer Dawkins, Rohit Abhishek, Jake Holland, Kiran Makhijani, Ali Begen, Cullen Jennings, Stephan Wenger, and Eric Vyncke for providing very helpful feedback suggestions and comments.<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">
+ Many Thanks to Spencer Dawkins, Rohit Abhishek, Jake Holland, Kiran Makhijani, Ali Begen, Cullen Jennings, Stephan Wenger, Eric Vyncke, Wesley Eddy, and Paul Kyzivat for providing very helpful feedback, suggestions and comments.<a href="#section-8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<section id="section-8">
+<section id="section-9">
       <h2 id="name-informative-references">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
       </h2>
 <dl class="references">
 <dt id="ABR_1">[ABR_1]</dt>
@@ -1741,14 +1765,10 @@ Since our use case envisages multiple users running the XR applications on their
       </h2>
 <address class="vcard">
         <div dir="auto" class="left"><span class="fn nameRole">Renan Krishna</span></div>
-<div dir="auto" class="left"><span class="org">InterDigital Europe Limited</span></div>
-<div dir="auto" class="left"><span class="street-address">64, Great Eastern Street</span></div>
-<div dir="auto" class="left"><span class="locality">London</span></div>
-<div dir="auto" class="left"><span class="postal-code">EC2A 3QR</span></div>
 <div dir="auto" class="left"><span class="country-name">United Kingdom</span></div>
 <div class="email">
 <span>Email:</span>
-<a href="mailto:renan.krishna@interdigital.com" class="email">renan.krishna@interdigital.com</a>
+<a href="mailto:renan.krishna@gmail.com" class="email">renan.krishna@gmail.com</a>
 </div>
 </address>
 <address class="vcard">

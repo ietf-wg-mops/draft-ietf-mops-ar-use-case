@@ -3,10 +3,10 @@
 
 
 MOPS                                                          R. Krishna
-Internet-Draft                               InterDigital Europe Limited
+Internet-Draft                                                          
 Intended status: Informational                                 A. Rahman
-Expires: 5 September 2024                                       Ericsson
-                                                            4 March 2024
+Expires: 17 November 2024                                       Ericsson
+                                                             16 May 2024
 
 
  Media Operations Use Case for an Extended Reality Application on Edge
@@ -45,7 +45,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 September 2024.
+   This Internet-Draft will expire on 17 November 2024.
 
 Copyright Notice
 
@@ -71,10 +71,11 @@ Table of Contents
    4.  XR Network Traffic
      4.1.  Traffic Workload
      4.2.  Traffic Performance Metrics
-   5.  IANA Considerations
-   6.  Security Considerations
-   7.  Acknowledgements
-   8.  Informative References
+   5.  Conclusion
+   6.  IANA Considerations
+   7.  Security Considerations
+   8.  Acknowledgements
+   9.  Informative References
    Authors' Addresses
 
 1.  Introduction
@@ -104,30 +105,44 @@ Table of Contents
    computationally intensive tasks need to be offloaded to resources
    provided by Edge Computing.
 
-   Edge Computing is an emerging paradigm where computing resources and
-   storage are made available in close network proximity at the edge of
-   the Internet to mobile devices and sensors [EDGE_1], [EDGE_2].  These
-   edge computing devices use cloud technologies that enable them to
-   support offloaded XR applications.  In particular, the edge devices
-   deploy cloud computing implementation techniques such as
-   disaggregation (using SDN to break vertically integrated systems into
-   independent components- these components can have open interfaces
-   which are standard, well documented and not proprietary),
-   virtualization (being able to run multiple independent copies of
-   those components such as SDN Controller apps, Virtual Network
-   Functions on a common hardware platform) and commoditization ( being
-   able to elastically scale those virtual components across commodity
-   hardware as the workload dictates) [EDGE_3].  Such techniques enable
-   XR applications requiring low-latency and high bandwidth to be
-   delivered by mini-clouds running on proximate edge devices.  This is
-   because the disaggregated components can run on proximate edge
-   devices rather than on remote cloud several hops away and deliver low
-   latency, high bandwidth service to offloaded applications [EDGE_2].
+   Edge Computing is an emerging paradigm where for the purpose of this
+   document, computing resources and storage are made available in close
+   network proximity at the edge of the Internet to mobile devices and
+   sensors [EDGE_1], [EDGE_2].  A computing resource or storage is in
+   close network proximity to a mobile device or sensor if there is a
+   short and high-capacity network path to it such that the latency and
+   bandwidth requirements of applications running on those mobile
+   devices or sensors can be met.  These edge computing devices use
+   cloud technologies that enable them to support offloaded XR
+   applications.  In particular, the edge devices deploy cloud computing
+   implementation techniques such as [EDGE_3]:
+
+   *  Disaggregation (using SDN to break vertically integrated systems
+      into independent components- these components can have open
+      interfaces which are standard, well documented and not
+      proprietary),
+
+   *  Virtualization (being able to run multiple independent copies of
+      those components such as SDN Controller apps, Virtual Network
+      Functions on a common hardware platform).
+
+   *  Commoditization (being able to elastically scale those virtual
+      components across commodity hardware as the workload dictates).
+
+   Such techniques enable XR applications requiring low-latency and high
+   bandwidth to be delivered by mini-clouds running on proximate edge
+   devices.  This is because the disaggregated components can run on
+   proximate edge devices rather than on remote cloud several hops away
+   and deliver low latency, high bandwidth service to offloaded
+   applications [EDGE_2].
 
    This document discusses the issues involved when edge computing
    resources are offered by network operators to operationalize the
    requirements of XR applications running on devices with various form
-   factors.  Examples of such form factors include Head Mounted Displays
+   factors.  A network operator for the purposes of this document is any
+   organization or individual that manages or operates the compute
+   resources or storage in close network proximity to a mobile device or
+   sensors.  Examples of form factors include Head Mounted Displays
    (HMD) such as Optical-see through HMDs and video-see-through HMDs and
    Hand-held displays.  Smart phones with video cameras and location
    sensing capabilities using systems such as a global navigation
@@ -136,7 +151,7 @@ Table of Contents
    running.  Besides as the user of these devices moves around as they
    run the XR application, the wireless latency and bandwidth available
    to the devices fluctuates and the communication link itself might
-   fail.  As a result algorithms such as those based on adaptive-bit-
+   fail.  As a result, algorithms such as those based on adaptive-bit-
    rate techniques that base their policy on heuristics or models of
    deployment perform sub-optimally in such dynamic environments
    [ABR_1].  In addition, network operators can expect that the
@@ -180,54 +195,60 @@ Table of Contents
    acquisition of a model of the real world, and finally registration
    [AUGMENTED].
 
-   Tracking: This includes tracking of the three dimensional coordinates
-   and six dimensional pose (coordinates and orientation) of objects in
-   the real world [AUGMENTED].  The XR application that runs on the
-   mobile device needs to track the pose of the user's head, eyes and
-   the objects that are in view.  This requires tracking natural
-   features that are then used in the next stage of the pipeline.
+   Tracking: The XR application that runs on the mobile device needs to
+   track the six-dimensional pose (translational in the three
+   perpendicular axes and rotational about those three axes) of the
+   user's head, eyes and the objects that are in view [AUGMENTED].  This
+   requires tracking natural features (for example points or edges of
+   objects) that are then used in the next stage of the pipeline.
 
    Acquisition of a model of the real world: The tracked natural
-   features are used to develop an annotated point cloud (a set of
+   features are used to develop a model of the real world.  One of the
+   ways this is done is to develop an annotated point cloud (a set of
    points in space that are annotated with descriptors) based model that
    is then stored in a database.  To ensure that this database can be
-   scaled up, techniques such as combining a client side simultaneous
-   tracking and mapping and a server-side localization are used[SLAM_1],
-   [SLAM_2], [SLAM_3], [SLAM_4].Another model that can be built is based
-   on polygon mesh and texture mapping technique.  The polygon mesh
-   encodes a 3D object's shape which is expressed as a collection of
-   small flat surfaces that are polygons.  In texture mapping, color
-   patterns are mapped on to an object's surface.  A third modelling
-   technique uses a 2D lightfield that describes the intensity or color
-   of the light rays arriving at a single point from arbitrary
-   directions.  Such a 2D lightfield is stored as a two-dimensional
-   table.  Assuming distant light sources, the single point is
-   approximately valid for small scenes.  For larger scenes, many 3D
-   positions are additionally stored making the table 5D [AUGMENTED].
+   scaled up, techniques such as combining a client-side simultaneous
+   tracking and mapping and a server-side localization are used to
+   construct a model of the real world [SLAM_1], [SLAM_2], [SLAM_3],
+   [SLAM_4].  Another model that can be built is based on polygon mesh
+   and texture mapping technique.  The polygon mesh encodes a 3D
+   object's shape which is expressed as a collection of small flat
+   surfaces that are polygons.  In texture mapping, color patterns are
+   mapped on to an object's surface.  A third modelling technique uses a
+   2D lightfield that describes the intensity or color of the light rays
+   arriving at a single point from arbitrary directions.  Such a 2D
+   lightfield is stored as a two-dimensional table.  Assuming distant
+   light sources, the single point is approximately valid for small
+   scenes.  For larger scenes, many 3D positions are additionally stored
+   making the table 5D.  A set of all such points (either 2D or 5D
+   lightfield) can then be used to construct a model of the real world
+   [AUGMENTED].
 
    Registration: The coordinate systems, brightness, and color of
-   virtual and real objects need to be aligned in a process called
-   registration [REG].  Once the natural features are tracked as
-   discussed above, virtual objects are geometrically aligned with those
-   features by geometric registration.  This is followed by resolving
-   occlusion that can occur between virtual and the real objects
-   [OCCL_1], [OCCL_2].  The XR application also applies photometric
-   registration [PHOTO_REG] by aligning the brightness and color between
-   the virtual and real objects.  Additionally, algorithms that
-   calculate global illumination of both the virtual and real objects
-   [GLB_ILLUM_1], [GLB_ILLUM_2] are executed.  Various algorithms to
-   deal with artifacts generated by lens distortion [LENS_DIST], blur
-   [BLUR], noise [NOISE] etc. are also required.
+   virtual and real objects need to be aligned with each other and this
+   process is called registration [REG].  Once the natural features are
+   tracked as discussed above, virtual objects are geometrically aligned
+   with those features by geometric registration.  This is followed by
+   resolving occlusion that can occur between virtual and the real
+   objects [OCCL_1], [OCCL_2].  The XR application also applies
+   photometric registration [PHOTO_REG] by aligning the brightness and
+   color between the virtual and real objects.  Additionally, algorithms
+   that calculate global illumination of both the virtual and real
+   objects [GLB_ILLUM_1], [GLB_ILLUM_2] are executed.  Various
+   algorithms to deal with artifacts generated by lens distortion
+   [LENS_DIST], blur [BLUR], noise [NOISE] etc. are also required.
 
 2.2.  Generation of Images
 
    The XR application must generate a high-quality video that has the
    properties described in the previous step and overlay the video on
-   the XR device's display- a step called situated visualization.  This
-   entails dealing with registration errors that may arise, ensuring
-   that there is no visual interference [VIS_INTERFERE], and finally
-   maintaining temporal coherence by adapting to the movement of user's
-   eyes and head.
+   the XR device's display- a step called situated visualization.  A
+   situated visualization is a visualization in which the virtual
+   objects that need to be seen by the XR user are overlaid correctly on
+   the real world.  This entails dealing with registration errors that
+   may arise, ensuring that there is no visual interference
+   [VIS_INTERFERE], and finally maintaining temporal coherence by
+   adapting to the movement of user's eyes and head.
 
 3.  Technical Challenges and Solutions
 
@@ -249,7 +270,7 @@ Table of Contents
    to Edge devices.
 
    Another requirement for our use case and similar applications such as
-   360 degree streaming (streaming of video that represents a view in
+   360-degree streaming (streaming of video that represents a view in
    every direction in 3D space) is that the display on the XR device
    should synchronize the visual input with the way the user is moving
    their head.  This synchronization is necessary to avoid motion
@@ -281,23 +302,24 @@ Table of Contents
    resource demands and playback the videos with appropriate QoE metrics
    as the user moves around with the group of tourists.
 
-   However, heavy-tailed nature of several operational parameters make
+   However, heavy-tailed nature of several operational parameters makes
    prediction-based adaptation by ABR algorithms sub-optimal [ABR_2].
-   This is because with such distributions, law of large numbers works
-   too slowly [HEAVY_TAIL_2], the mean of sample does not equal the mean
-   of distribution [HEAVY_TAIL_2], and as a result standard deviation
-   and variance are unsuitable as metrics for such operational
-   parameters [HEAVY_TAIL_1].  Other subtle issues with these
-   distributions include the "expectation paradox" [HEAVY_TAIL_1] where
-   the longer the wait for an event, the longer a further need to wait
-   and the issue of mismatch between the size and count of events
-   [HEAVY_TAIL_1].  This makes designing an algorithm for adaptation
-   error-prone and challenging.  Such operational parameters include but
-   are not limited to buffer occupancy, throughput, client-server
-   latency, and variable transmission times.  In addition, edge devices
-   and communication links may fail and logical communication
-   relationships between various software components change frequently
-   as the user moves around with their XR device [UBICOMP].
+   This is because with such distributions, law of large numbers (how
+   long does it take for sample mean to stabilize) works too slowly
+   [HEAVY_TAIL_2], the mean of sample does not equal the mean of
+   distribution [HEAVY_TAIL_2], and as a result standard deviation and
+   variance are unsuitable as metrics for such operational parameters
+   [HEAVY_TAIL_1].  Other subtle issues with these distributions include
+   the "expectation paradox" [HEAVY_TAIL_1] where the longer the wait
+   for an event, the longer a further need to wait and the issue of
+   mismatch between the size and count of events [HEAVY_TAIL_1].  This
+   makes designing an algorithm for adaptation error-prone and
+   challenging.  Such operational parameters include but are not limited
+   to buffer occupancy, throughput, client-server latency, and variable
+   transmission times.  In addition, edge devices and communication
+   links may fail and logical communication relationships between
+   various software components change frequently as the user moves
+   around with their XR device [UBICOMP].
 
 4.  XR Network Traffic
 
@@ -358,11 +380,11 @@ Table of Contents
         +-----------------------------------+---------------------+
         | 3D Model and Data Visualization   | 2 to 20 Mbps        |
         +-----------------------------------+---------------------+
-        | Two way Telepresence              | 5 to 25 Mbps        |
+        | Two-way Telepresence              | 5 to 25 Mbps        |
         +-----------------------------------+---------------------+
-        | Current-Gen 360 degree video (4K) | 10 to 50 Mbps       |
+        | Current-Gen 360-degree video (4K) | 10 to 50 Mbps       |
         +-----------------------------------+---------------------+
-        | Next-Gen 360 degree video (8K,    | 50 to 200 Mbps      |
+        | Next-Gen 360-degree video (8K,    | 50 to 200 Mbps      |
         | 90+ FPS, HDR, Stereoscopic)       |                     |
         +-----------------------------------+---------------------+
         | 6DoF Video or Point Cloud         | 200 to 1000 Mbps    |
@@ -406,7 +428,7 @@ Table of Contents
    Response times can be defined as the time interval between the end of
    a request submission and the end of the corresponding response from a
    system.  If the XR device offloads a task to an edge server, the
-   response time of the server is the round trip time from when a data
+   response time of the server is the round-trip time from when a data
    packet is sent from the XR device until a response is received.  Note
    that the required response time provides an upper bound on the sum of
    the time taken by computational tasks such as processing of scenes,
@@ -454,23 +476,40 @@ Table of Contents
 
       Table 2: Traffic Performance Metrics of Selected XR Applications
 
-5.  IANA Considerations
+5.  Conclusion
+
+   In order to operationalize a use case such as the one presented in
+   this document, a network operator could dimension their network to
+   provide a short and high-capacity network path from the edge compute
+   resources or storage to the mobile devices running the XR
+   application.  This is required to ensure a response time of 20ms at
+   most and preferably between 7-15ms.  Additionally, a bandwidth of 200
+   to 1000Mbps is required by such applications.  To deal with the
+   characteristics of XR traffic as discussed in this document, network
+   operators could deploy a managed edge cloud service that
+   operationally provides dynamic placement of XR servers, mobility
+   support and energy management.  Although the use case is technically
+   feasible, economic viability is an important factor that must be
+   considered.
+
+6.  IANA Considerations
 
    This document has no IANA actions.
 
-6.  Security Considerations
+7.  Security Considerations
 
    The security issues for the presented use case are similar to other
    streaming applications.  This document itself introduces no new
    security issues.
 
-7.  Acknowledgements
+8.  Acknowledgements
 
    Many Thanks to Spencer Dawkins, Rohit Abhishek, Jake Holland, Kiran
-   Makhijani, Ali Begen, Cullen Jennings, Stephan Wenger, and Eric
-   Vyncke for providing very helpful feedback suggestions and comments.
+   Makhijani, Ali Begen, Cullen Jennings, Stephan Wenger, Eric Vyncke,
+   Wesley Eddy, and Paul Kyzivat for providing very helpful feedback,
+   suggestions and comments.
 
-8.  Informative References
+9.  Informative References
 
    [ABR_1]    Mao, H., Netravali, R., and M. Alizadeh, "Neural Adaptive
               Video Streaming with Pensieve", In Proceedings of the
@@ -692,12 +731,8 @@ Table of Contents
 Authors' Addresses
 
    Renan Krishna
-   InterDigital Europe Limited
-   64, Great Eastern Street
-   London
-   EC2A 3QR
    United Kingdom
-   Email: renan.krishna@interdigital.com
+   Email: renan.krishna@gmail.com
 
 
    Akbar Rahman
