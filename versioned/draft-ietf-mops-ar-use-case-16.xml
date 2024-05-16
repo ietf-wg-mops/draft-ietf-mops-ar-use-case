@@ -5,19 +5,23 @@
   <!ENTITY nbhy   "&#8209;">
   <!ENTITY wj     "&#8288;">
 ]>
-<rfc xmlns:xi="http://www.w3.org/2001/XInclude" ipr="trust200902" category="info" docName="draft-ietf-mops-ar-use-case-latest" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true" version="3">
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude" ipr="trust200902" category="info" docName="draft-ietf-mops-ar-use-case-16" obsoletes="" updates="" submissionType="IETF" xml:lang="en" tocInclude="true" symRefs="true" sortRefs="true" version="3">
   <!-- xml2rfc v2v3 conversion 3.11.1 -->
   <front>
     <title abbrev="MOPS AR Use Case">Media Operations Use Case for an Extended Reality Application on Edge Computing Infrastructure</title>
-    <seriesInfo name="Internet-Draft" value="draft-ietf-mops-ar-use-case-latest"/>
+    <seriesInfo name="Internet-Draft" value="draft-ietf-mops-ar-use-case-16"/>
     <author fullname="Renan Krishna" initials="R." surname="Krishna">
-
+      <organization>
+				InterDigital Europe Limited
+      </organization>
       <address>
         <postal>
-
+          <street>64, Great Eastern Street</street>
+          <city>London</city>
+          <code>EC2A 3QR </code>
           <country>United Kingdom</country>
         </postal>
-        <email>renan.krishna@gmail.com</email>
+        <email>renan.krishna@interdigital.com</email>
         <uri/>
       </address>
     </author>
@@ -77,38 +81,22 @@
 		on mobile devices, computationally intensive tasks need to be offloaded to resources provided by Edge Computing.
       </t>
       <t>
-		Edge Computing is an emerging paradigm where for the purpose of this document, computing resources and storage are made available in close
-		network proximity at the edge of the Internet to mobile devices and sensors <xref target="EDGE_1" format="default"/>, <xref target="EDGE_2" format="default"/>. A computing resource or storage is in
-		close network proximity to a mobile device or sensor if there is a short and high-capacity network path to it
-		such that the latency and bandwidth requirements of applications running on those mobile devices or sensors can be met.
+		Edge Computing is an emerging paradigm where computing resources and storage are made available in close
+		network proximity at the edge of the Internet to mobile devices and sensors <xref target="EDGE_1" format="default"/>, <xref target="EDGE_2" format="default"/>.
 		These edge computing devices use cloud technologies that enable them to support offloaded XR applications. In particular, the edge devices deploy
-		cloud computing implementation techniques such as <xref target="EDGE_3" format="default"/>:
-		</t>
-		
-		<ul spacing="normal">
-        <li>Disaggregation (using SDN to break vertically integrated systems into independent components- these components can have open interfaces which are standard, well documented and not proprietary),
-			   </li>
-        <li>Virtualization (being able to run multiple independent copies of those components such as SDN Controller apps, Virtual Network Functions on a
-		common hardware platform).</li>
-        <li>Commoditization (being able to elastically scale those virtual components across commodity hardware as the workload dictates).</li>
-      </ul>
-		
-		
-		
-		<t>
-		 Such techniques enable XR applications requiring low-latency and high bandwidth to be delivered by mini-clouds
+		cloud computing implementation techniques such as disaggregation (using SDN to break vertically integrated systems into independent components- these components can have open interfaces which are standard, well documented and not proprietary), virtualization (being able to run multiple independent copies of those components such as SDN Controller apps, Virtual Network Functions on a
+		common hardware platform) and commoditization ( being able to elastically scale those virtual components across commodity hardware as the workload dictates)
+		<xref target="EDGE_3" format="default"/>. Such techniques enable XR applications requiring low-latency and high bandwidth to be delivered by mini-clouds
 		running on proximate edge devices. This is because the disaggregated components can run on proximate edge devices rather than on remote cloud several hops away and deliver low latency, high bandwidth service to offloaded applications <xref target="EDGE_2" format="default"/>.
       </t>
       <t>
 	  This document discusses the issues involved when edge computing resources are offered by network operators to
-	  operationalize the requirements of XR applications running on devices with various form factors. A network operator for the purposes of this
-	  document is any organization or individual that manages or operates the compute resources or storage in close network proximity
-	  to a mobile device or sensors. Examples of form factors
+	  operationalize the requirements of XR applications running on devices with various form factors. Examples of such form factors
 	  include Head Mounted Displays (HMD) such as Optical-see through HMDs and video-see-through HMDs and Hand-held displays.
 	  Smart phones with video cameras and location sensing capabilities using systems such as a global navigation satellite system (GNSS) are another example of such devices. These devices have limited
 	  battery capacity and dissipate heat when running. Besides as the user of these devices moves around as they run the
 	  XR application, the wireless latency and bandwidth available to the devices fluctuates and the communication link itself
-	  might fail. As a result, algorithms such as those based on adaptive-bit-rate techniques that base their policy on heuristics
+	  might fail. As a result algorithms such as those based on adaptive-bit-rate techniques that base their policy on heuristics
 	  or models of deployment perform sub-optimally in such dynamic environments <xref target="ABR_1" format="default"/>.
 	  In addition, network operators can expect that the parameters that characterize the expected behavior of XR applications
 	  are heavy tailed. Heaviness of tails is defined as the difference from the normal distribution in the proportion of the values that fall a long way from the mean <xref target="HEAVY_TAIL_3" format="default"/>. Such workloads require appropriate resource management policies to be used on the Edge.
@@ -148,18 +136,21 @@
 		
         </t>
         <t>
-		Tracking: The XR application that runs on the mobile device needs to track the six-dimensional pose (translational in the three perpendicular axes and rotational about those three axes)
-		of the user's head, eyes and the objects that are in view <xref target="AUGMENTED" format="default"/>. This requires tracking natural features (for example points or edges of objects) that are then used in the next stage of the pipeline.
+		Tracking: This includes tracking of the three dimensional coordinates and six dimensional pose (coordinates and orientation)
+		of objects in the real world <xref target="AUGMENTED" format="default"/>.
+		The XR application that runs on the mobile device needs to track the pose
+		of the user's head, eyes and the
+		objects that are in view. This requires tracking natural features that are then used in the next stage of the pipeline.
         </t>
         <t>
-		Acquisition of a model of the real world: The tracked natural features are used to develop a model of the real world. One of the ways this is done is to develop an annotated
+		Acquisition of a model of the real world: The tracked natural features are used to develop an annotated
 		point cloud (a set of points in space that are annotated with descriptors) based model that is then stored in a database. To ensure that this database can be scaled up, techniques such as
-		combining a client-side simultaneous tracking and mapping and a server-side localization
-		are used to construct a model of the real world <xref target="SLAM_1" format="default"/>, <xref target="SLAM_2" format="default"/>, <xref target="SLAM_3" format="default"/>, <xref target="SLAM_4" format="default"/>. Another model that can be built is based on polygon mesh and texture mapping technique. The polygon mesh encodes a 3D object's shape which is expressed as a collection of small flat surfaces that are polygons. In texture mapping, color patterns are mapped on to an object's surface. A third modelling technique uses a 2D lightfield that describes the intensity or color of the light rays arriving at a single point from arbitrary directions. Such a 2D lightfield is stored as a two-dimensional table. Assuming distant light sources, the single point is approximately valid for small scenes. For larger scenes, many 3D positions are additionally stored making the table 5D. A set of all such points (either 2D or 5D lightfield) can then be used to construct a model of the real world <xref target="AUGMENTED" format="default"/>.
+		combining a client side simultaneous tracking and mapping and a server-side localization
+		are used<xref target="SLAM_1" format="default"/>, <xref target="SLAM_2" format="default"/>, <xref target="SLAM_3" format="default"/>, <xref target="SLAM_4" format="default"/>.Another model that can be built is based on polygon mesh and texture mapping technique. The polygon mesh encodes a 3D object's shape which is expressed as a collection of small flat surfaces that are polygons. In texture mapping, color patterns are mapped on to an object's surface. A third modelling technique uses a 2D lightfield that describes the intensity or color of the light rays arriving at a single point from arbitrary directions. Such a 2D lightfield is stored as a two-dimensional table. Assuming distant light sources, the single point is approximately valid for small scenes. For larger scenes, many 3D positions are additionally stored making the table 5D <xref target="AUGMENTED" format="default"/>.
         </t>
         <t>
 		Registration: The coordinate systems, brightness, and color
-		of virtual and real objects need to be aligned with each other and this process is called registration <xref target="REG" format="default"/>.
+		of virtual and real objects need to be aligned in a process called registration <xref target="REG" format="default"/>.
 		Once the
 		natural features are tracked as discussed above, virtual objects are geometrically aligned with those features by geometric registration. This is followed by
 		resolving occlusion that can occur between virtual and the real objects <xref target="OCCL_1" format="default"/>, <xref target="OCCL_2" format="default"/>.
@@ -175,7 +166,7 @@
         <name>Generation of Images</name>
         <t>
 		The XR application must generate a high-quality video that has the properties described in the previous step
-		and overlay the video on the XR device's display- a step called situated visualization. A situated visualization is a visualization in which the virtual objects that need to be seen by the XR user are overlaid correctly on the real world. This entails  dealing with registration errors that
+		and overlay the video on the XR device's display- a step called situated visualization.	This entails  dealing with registration errors that
 		may arise, ensuring that there is no visual interference <xref target="VIS_INTERFERE" format="default"/>, and finally maintaining
 		temporal coherence by adapting to the movement of user's eyes and head.
         </t>
@@ -202,7 +193,7 @@
       </t>
       <t>
 	
-	Another requirement for our use case and similar applications such as 360-degree streaming (streaming of video that represents a view in every direction in 3D space) is that the display on
+	Another requirement for our use case and similar applications such as 360 degree streaming (streaming of video that represents a view in every direction in 3D space) is that the display on
 	the XR device should synchronize the visual input with the way the user is moving their head. This synchronization
 	is necessary to avoid motion sickness that results from a time-lag between when the user moves their head and
 	when the appropriate video scene is rendered. This time lag is often called "motion-to-photon" delay.
@@ -228,8 +219,8 @@ communication between an Edge server and User Equipment (UE)  <xref target="URLL
 		 to the resource demands and playback the videos with appropriate QoE metrics as the user moves around with the group of tourists.
       </t>
       <t>
-		However, heavy-tailed nature of several  operational parameters makes prediction-based  adaptation by ABR algorithms sub-optimal <xref target="ABR_2" format="default"/>.
-		This is because with such distributions, law of large numbers (how long does it take for sample mean to stabilize) works too slowly <xref target="HEAVY_TAIL_2" format="default"/>, the mean of sample does not equal the mean of distribution <xref target="HEAVY_TAIL_2" format="default"/>,
+		However, heavy-tailed nature of several  operational parameters make prediction-based  adaptation by ABR algorithms sub-optimal <xref target="ABR_2" format="default"/>.
+		This is because with such distributions, law of large numbers works too slowly <xref target="HEAVY_TAIL_2" format="default"/>, the mean of sample does not equal the mean of distribution <xref target="HEAVY_TAIL_2" format="default"/>,
 		and as a result standard deviation and variance are unsuitable as metrics for such operational parameters <xref target="HEAVY_TAIL_1" format="default"/>. Other subtle issues with
 		these distributions include the "expectation paradox" <xref target="HEAVY_TAIL_1" format="default"/> where the longer the wait for an event, the longer a further need to wait and the
 		issue of mismatch between the size and count of events <xref target="HEAVY_TAIL_1" format="default"/>. This makes designing an algorithm for
@@ -284,15 +275,15 @@ The operators of edge servers will need to run a 'managed edge cloud service' <x
 		 </tr>
 		
 		 <tr>
-		  <td> <t>Two-way Telepresence</t></td> <td> <t>5 to 25 Mbps</t></td>
+		  <td> <t>Two way Telepresence</t></td> <td> <t>5 to 25 Mbps</t></td>
 		 </tr>
 		
 		 <tr>
-		  <td> <t>Current-Gen 360-degree video (4K)</t></td> <td> <t>10 to 50 Mbps</t></td>
+		  <td> <t>Current-Gen 360 degree video (4K)</t></td> <td> <t>10 to 50 Mbps</t></td>
 		 </tr>
 		
 		 <tr>
-		  <td> <t>Next-Gen 360-degree video (8K, 90+ FPS, HDR, Stereoscopic)</t></td> <td> <t>50 to 200 Mbps</t></td>
+		  <td> <t>Next-Gen 360 degree video (8K, 90+ FPS, HDR, Stereoscopic)</t></td> <td> <t>50 to 200 Mbps</t></td>
 		 </tr>
 		
 		 <tr>
@@ -336,7 +327,7 @@ The operators of edge servers will need to run a 'managed edge cloud service' <x
 
          <t>
             The following <xref target="TABLE_2" format="default"/> <xref target="METRICS_6" format="default"/> shows a taxonomy of applications with their associated required response times and bandwidths. Response times can
-be defined as the time interval between the end of a request submission and the end of the corresponding response from a system. If the XR device offloads a task to an edge server, the response time of the server is the round-trip time from when a data packet is sent from the XR device until a response is received. Note that the required response time provides an upper bound on the sum of the time taken by computational tasks such as processing of scenes, generation of images and the round-trip time. This response time depends only on the Quality of Service (QOS) required by an application. The response time is therefore independent of the underlying technology of the network and the time taken by the computational tasks.
+be defined as the time interval between the end of a request submission and the end of the corresponding response from a system. If the XR device offloads a task to an edge server, the response time of the server is the round trip time from when a data packet is sent from the XR device until a response is received. Note that the required response time provides an upper bound on the sum of the time taken by computational tasks such as processing of scenes, generation of images and the round-trip time. This response time depends only on the Quality of Service (QOS) required by an application. The response time is therefore independent of the underlying technology of the network and the time taken by the computational tasks.
 
          </t>
         <t>
@@ -387,16 +378,6 @@ Since our use case envisages multiple users running the XR applications on their
 
 	</section>
 
-<section anchor="conclusion" numbered="true" toc="default">
-        <name>Conclusion</name>
-        <t>
-	    In order to operationalize a use case such as the one presented in this document, a network operator could dimension their network to provide a short and high-capacity network path from the edge compute
-	    resources or storage to the mobile devices running the XR application. This is required to ensure a response time of 20ms at most and preferably between 7-15ms. Additionally, a bandwidth of 200
-	    to 1000Mbps is required by such applications. To deal with the characteristics of XR traffic as discussed in this document, network operators could deploy a managed edge cloud service that operationally
-	    provides dynamic placement of XR servers, mobility support and energy management. Although the use case is technically feasible, economic viability is an important factor that must be considered.
-		
-        </t>
-</section>
 
 <section anchor="iana" numbered="true" toc="default">
         <name>IANA Considerations</name>
@@ -420,7 +401,7 @@ Since our use case envisages multiple users running the XR applications on their
 	<section anchor="ack" numbered="true" toc="default">
         <name>Acknowledgements</name>
         <t>
-		Many Thanks to Spencer Dawkins, Rohit Abhishek, Jake Holland, Kiran Makhijani, Ali Begen, Cullen Jennings, Stephan Wenger, Eric Vyncke, Wesley Eddy, and Paul Kyzivat for providing very helpful feedback, suggestions and comments.
+		Many Thanks to Spencer Dawkins, Rohit Abhishek, Jake Holland, Kiran Makhijani, Ali Begen, Cullen Jennings, Stephan Wenger, and Eric Vyncke for providing very helpful feedback suggestions and comments.
 		
         </t>
 
